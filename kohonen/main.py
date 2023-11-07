@@ -1,11 +1,11 @@
-'''main of Kohonen'''
+'''https://github.com/sagnb/OCA'''
 
 from argparse import RawTextHelpFormatter
 import argparse
 import os.path
 import numpy as np
 
-import kohonen
+import som.kohonen
 
 
 def args():
@@ -53,6 +53,6 @@ if __name__ == '__main__':
     if end is None:
         end = np.array([i-1 for i in input_matrix.shape])
 
-    som = kohonen.SOM(input_matrix, start, end)
+    som = som.kohonen.SOM(input_matrix, start, end)
     som.fit(200000, 100)
     som.plot_path()

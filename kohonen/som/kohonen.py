@@ -1,4 +1,4 @@
-'''Kohonen Script'''
+'''Kohonen Map or SOM(Self Organizing Maps)'''
 
 import math
 import numpy as np
