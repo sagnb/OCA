@@ -1,0 +1,48 @@
+\begin{sphinxtheindex}
+\let\bigletter\sphinxstyleindexlettergroup
+\let\spxpagem \sphinxstyleindexpagemain
+\let\spxentry \sphinxstyleindexentry
+\let\spxextra \sphinxstyleindexextra
+
+  \bigletter A
+  \item \spxentry{args()}\spxextra{in module main}, \hyperpage{1}
+
+  \indexspace
+  \bigletter D
+  \item \spxentry{dissimilarity()}\spxextra{in module som.kohonen}, \hyperpage{1}
+
+  \indexspace
+  \bigletter F
+  \item \spxentry{find\_winner()}\spxextra{som.kohonen.SOM method}, \hyperpage{1}
+  \item \spxentry{fit()}\spxextra{som.kohonen.SOM method}, \hyperpage{1}
+
+  \indexspace
+  \bigletter G
+  \item \spxentry{gaussian()}\spxextra{in module som.kohonen}, \hyperpage{2}
+
+  \indexspace
+  \bigletter M
+  \item \spxentry{main}
+    \subitem \spxentry{module}, \hyperpage{1}
+  \item \spxentry{module}
+    \subitem \spxentry{main}, \hyperpage{1}
+    \subitem \spxentry{som}, \hyperpage{2}
+    \subitem \spxentry{som.kohonen}, \hyperpage{1}
+
+  \indexspace
+  \bigletter P
+  \item \spxentry{plot\_path()}\spxextra{som.kohonen.SOM method}, \hyperpage{1}
+
+  \indexspace
+  \bigletter S
+  \item \spxentry{som}
+    \subitem \spxentry{module}, \hyperpage{2}
+  \item \spxentry{SOM}\spxextra{class in som.kohonen}, \hyperpage{1}
+  \item \spxentry{som.kohonen}
+    \subitem \spxentry{module}, \hyperpage{1}
+
+  \indexspace
+  \bigletter V
+  \item \spxentry{vet()}\spxextra{in module som.kohonen}, \hyperpage{2}
+
+\end{sphinxtheindex}

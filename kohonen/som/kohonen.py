@@ -142,6 +142,8 @@ class SOM:
         Plot the fit path using matplotlib
         '''
         plt.plot(self.neurons[:, 0], self.neurons[:, 1])
+        plt.scatter(self.start_point[0], self.start_point[1], marker='^', c='blue')
+        plt.scatter(self.end_point[0], self.end_point[1], marker='o', c='red')
         for i, row in enumerate(self.input_matrix):
             for j, point in enumerate(row):
                 if point == 1:

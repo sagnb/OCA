@@ -1,0 +1,22 @@
+Welcome to SOM Documentation’s documentation!
+*********************************************
+
+
+Contents:
+^^^^^^^^^
+
+* kohonen
+
+  * main module
+
+  * som package
+
+
+Indices and tables
+******************
+
+* Index
+
+* Module Index
+
+* Search Page
