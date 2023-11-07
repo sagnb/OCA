@@ -1,0 +1,86 @@
+som package
+***********
+
+
+Submodules
+==========
+
+
+som.kohonen module
+==================
+
+Kohonen Map or SOM(Self Organizing Maps)
+
+class som.kohonen.SOM(input_matrix: ndarray, start_point: ndarray, end_point: ndarray)
+
+   Bases: "object"
+
+   Self Organizing Maps
+
+   find_winner(seed: ndarray)
+
+      Find winner in neurons vector
+
+      Parameters:
+         **seed** – numpy.ndarray
+
+   fit(max_time: int, max_sigma: float)
+
+      Adjust neuron weights
+
+      Parameters:
+         * **max_time** – int
+
+         * **max_sigma** – float
+
+   plot_path()
+
+      Plot the fit path using matplotlib
+
+som.kohonen.dissimilarity(a: ndarray, b: ndarray, p: int = 2) -> float64
+
+   Return the dissimilarity between a and b
+
+   Parameters:
+      * **a** – numpy.ndarray
+
+      * **b** – numpy.ndarray
+
+   Return dissimilarity:
+      numpy.float64
+
+som.kohonen.gaussian(current_index: int, winner_index: int, current_time: int, max_time: int, max_sigma: float) -> float
+
+   Returns the result of the Gaussian function taking into account the
+   topology of the winning neuron and the neuron currently being
+   recalculated
+
+   Parameters:
+      * **current_index** – int
+
+      * **winner_index** – int
+
+      * **current_time** – int
+
+      * **max_time** – int
+
+      * **max_sigma** – float
+
+   Return Gaussian value:
+      float
+
+som.kohonen.vet(a: ndarray, b: ndarray) -> ndarray
+
+   Generates vector between a and b
+
+   Parameters:
+      * **a** – numpy.ndarray
+
+      * **b** – numpy.ndarray
+
+   Return vector:
+      numpy.ndarray
+
+
+Module contents
+===============

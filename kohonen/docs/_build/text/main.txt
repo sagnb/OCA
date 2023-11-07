@@ -1,0 +1,11 @@
+main module
+***********
+
+https://github.com/sagnb/OCA
+
+main.args()
+
+   Return args
+
+   Return arguments passed to the program:
+      argparse.Namespace

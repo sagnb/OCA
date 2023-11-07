@@ -28,3 +28,9 @@ python main.py --help
 ```sh
 kohonen/docs/_build/html/index.html
 ```
+
+or
+
+```sh
+kohonen/docs/_build/latex/SOM_Documentation.pdf
+```

@@ -1,0 +1,12 @@
+kohonen
+*******
+
+* main module
+
+* som package
+
+  * Submodules
+
+  * som.kohonen module
+
+  * Module contents
