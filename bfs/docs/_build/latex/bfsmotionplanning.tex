@@ -82,8 +82,85 @@
 \phantomsection\label{\detokenize{index::doc}}
 
 
+\sphinxstepscope
+
+
+\chapter{bfs}
+\label{\detokenize{modules:bfs}}\label{\detokenize{modules::doc}}
+\sphinxstepscope
+
+
+\section{main module}
+\label{\detokenize{main:module-main}}\label{\detokenize{main:main-module}}\label{\detokenize{main::doc}}\index{module@\spxentry{module}!main@\spxentry{main}}\index{main@\spxentry{main}!module@\spxentry{module}}\index{Node (class in main)@\spxentry{Node}\spxextra{class in main}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{main:main.Node}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{main.}}\sphinxbfcode{\sphinxupquote{Node}}}{\emph{\DUrole{n}{parent}\DUrole{o}{=}\DUrole{default_value}{None}}, \emph{\DUrole{n}{position}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\pysigstopsignatures
 \sphinxAtStartPar
-main
+Bases: \sphinxcode{\sphinxupquote{object}}
+
+\end{fulllineitems}
+
+\index{breadth\_first\_search() (in module main)@\spxentry{breadth\_first\_search()}\spxextra{in module main}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{main:main.breadth_first_search}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{main.}}\sphinxbfcode{\sphinxupquote{breadth\_first\_search}}}{\emph{\DUrole{n}{maze}}, \emph{\DUrole{n}{start}}, \emph{\DUrole{n}{end}}}{}
+\pysigstopsignatures
+\end{fulllineitems}
+
+\index{equals() (in module main)@\spxentry{equals()}\spxextra{in module main}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{main:main.equals}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{main.}}\sphinxbfcode{\sphinxupquote{equals}}}{\emph{\DUrole{n}{self}}, \emph{\DUrole{n}{other\_node}}}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Checks if this node is equal to another node based on their positions.
+\begin{description}
+\sphinxlineitem{Args:}
+\sphinxAtStartPar
+other\_node: The other node to be compared.
+
+\sphinxlineitem{Returns:}
+\sphinxAtStartPar
+True if the positions of the nodes are equal, False otherwise.
+
+\end{description}
+
+\end{fulllineitems}
+
+\index{get\_args() (in module main)@\spxentry{get\_args()}\spxextra{in module main}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{main:main.get_args}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{main.}}\sphinxbfcode{\sphinxupquote{get\_args}}}{}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Return args
+\begin{quote}\begin{description}
+\sphinxlineitem{Return arguments passed to the program}
+\sphinxAtStartPar
+argparse.Namespace
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{main() (in module main)@\spxentry{main()}\spxextra{in module main}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{main:main.main}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{main.}}\sphinxbfcode{\sphinxupquote{main}}}{}{}
+\pysigstopsignatures
+\end{fulllineitems}
+
 
 
 \chapter{Indices and tables}
@@ -103,6 +180,12 @@ main
 \end{itemize}
 
 
+\renewcommand{\indexname}{Python Module Index}
+\begin{sphinxtheindex}
+\let\bigletter\sphinxstyleindexlettergroup
+\bigletter{m}
+\item\relax\sphinxstyleindexentry{main}\sphinxstyleindexpageref{main:\detokenize{module-main}}
+\end{sphinxtheindex}
 
 \renewcommand{\indexname}{Index}
 \printindex
