@@ -35,6 +35,18 @@ or
 kohonen/docs/_build/latex/SOM_Documentation.pdf
 ```
 
+
+## BFS
+
+### Dependencies
+
+* Python 3.11.5
+* Argparse
+* Numpy
+* Deque
+
+### Run
+
 in bfs folder:
 
 ```sh

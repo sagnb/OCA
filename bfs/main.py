@@ -3,7 +3,6 @@ import numpy as np
 import os.path
 import argparse
 from argparse import RawTextHelpFormatter
-import time
 
 class Node:
     def __init__(self, parent=None, position=None):
