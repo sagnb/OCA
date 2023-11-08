@@ -15,7 +15,7 @@ class Node:
         """
         self.parent = parent
         self.position = position
-def equals(self, other_node):
+    def equals(self, other_node):
         """
         Checks if this node is equal to another node based on their positions.
 
@@ -60,6 +60,10 @@ def breadth_first_search(maze, start, end):
         '''
 
         if current_node.equals(end_node):
+            if current_node.position == end: 
+                return [current_node.position] 
+
+            
             path = []
             current = current_node
 
@@ -131,6 +135,19 @@ def main():
    
     start = tuple(args.start_point)
     end = tuple(args.end_point)
+
+    if start and (maze[start[0]][start[1]] == 1):
+        print("Start position is a blocked position on the maze.")
+        return
+    elif end and (maze[end[0]][end[1]] == 1):
+        print("End position is a blocked position on the maze.")
+        return
+    else:
+        path = breadth_first_search(maze, start, end)
+        if not path:
+            print("No path found.")
+        else:
+            print("Path:", path)
  
     path = breadth_first_search(maze, start, end)
 
