@@ -10,7 +10,7 @@ Welcome to BFS Motion Planning Documentation's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-main
+   modules
 
 Indices and tables
 ==================
