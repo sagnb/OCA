@@ -3,6 +3,8 @@ import numpy as np
 import os.path
 import argparse
 from argparse import RawTextHelpFormatter
+import tracemalloc
+import timeit
 
 class Node:
     def __init__(self, parent=None, position=None):
@@ -133,8 +135,17 @@ def main():
     else:
         maze = np.zeros((10, 10))
    
-    start = tuple(args.start_point)
-    end = tuple(args.end_point)
+    start = args.start_point
+    end = args.end_point
+    
+    if start is None:
+        start = [0 for i in maze.shape]
+
+    if end is None:
+        end = [i-1 for i in maze.shape]
+    
+    start = tuple(start)
+    end = tuple(end)
 
     if start and (maze[start[0]][start[1]] == 1):
         print("Start position is a blocked position on the maze.")

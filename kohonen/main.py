@@ -3,6 +3,8 @@
 from argparse import RawTextHelpFormatter
 import argparse
 import os.path
+import tracemalloc
+import timeit
 import numpy as np
 
 import som.kohonen
@@ -53,6 +55,18 @@ if __name__ == '__main__':
     if end is None:
         end = np.array([i-1 for i in input_matrix.shape])
 
-    som = som.kohonen.SOM(input_matrix, start, end)
-    som.fit(200000, 100)
-    som.plot_path()
+    tracemalloc.start()
+
+    my_som = som.kohonen.SOM(input_matrix, start, end)
+    time = timeit.timeit(lambda: my_som.fit(200000, 100), number=1)
+
+    memo = tracemalloc.get_traced_memory()[1]
+    tracemalloc.stop()
+
+    # my_som.plot_path()
+
+    total_dist = 0
+    for i, neuron in enumerate(my_som.neurons):
+        dist = som.kohonen.dissimilarity(neuron, my_som.neurons[i-1]) if i > 0 else 0
+        total_dist += dist
+    print(f'{total_dist}\n{memo}\n{time}\n')
