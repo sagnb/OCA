@@ -62,20 +62,15 @@ def breadth_first_search(maze, start, end):
         '''
 
         if current_node.equals(end_node):
-            if current_node.position == end: 
-                return [current_node.position] 
+            if current_node.position == end:
+                path = []
+                current = current_node
 
-            
-            path = []
-            current = current_node
+                while current is not None:
+                    path.append(current.position)
+                    current = current.parent
 
-            '''
-            # Reconstruct the rollback path
-            '''
-            while current is not None:
-                path.append(current.position)
-                current = current.parent
-            return path[::-1]
+                return path[::-1]
 
         movements = [(0, -1), (0, 1), (-1, 0), (1, 0)]
 
@@ -159,10 +154,6 @@ def main():
             print("No path found.")
         else:
             print("Path:", path)
- 
-    path = breadth_first_search(maze, start, end)
-
-    print(path)
 
 if __name__ == "__main__":
     main()
