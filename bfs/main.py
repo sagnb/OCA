@@ -72,7 +72,6 @@ def breadth_first_search(maze, start, end):
                 '''
                 new_node = Node(current_node, new_position)
                 queue.append(new_node)
-                print(visited)
                 visited.add(new_position)
 
     return []
