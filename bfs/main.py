@@ -32,63 +32,48 @@ class Node:
 def breadth_first_search(maze, start, end):
     start_node = Node(None, start)
     end_node = Node(None, end)
-    """
-    Performs a breadth-first search to find a path in the maze.
 
-    Args:
-        maze (list of lists): A two-dimensional array representing the maze.
-        start (tuple): The starting maze position.
-        end (tuple): The destination maze position.
-
-    Returns:
-        A list of positions representing the path from start to end, or an empty list if there is no path.
-    """ 
-
-    '''
-        :param maze: numpy.ndarray
-        :param start_point: np.ndarray
-        :param end_point: np.ndarray
-    '''
     queue = deque()
+    visited = set()  # Conjunto para manter o controle dos nós visitados
     queue.append(start_node)
+    visited.add(start_node.position)
 
     while queue:
         current_node = queue.popleft()
 
-        '''
-        # Check if the current node is the end node
         # Reconstruct the path from the end to the start
-        
-        '''
-
         if current_node.equals(end_node):
-            if current_node.position == end:
-                path = []
-                current = current_node
+            path = []
+            current = current_node
 
-                while current is not None:
-                    path.append(current.position)
-                    current = current.parent
+            while current is not None:
+                path.append(current.position)
+                current = current.parent
 
-                return path[::-1]
+            return path[::-1]
 
         movements = [(0, -1), (0, 1), (-1, 0), (1, 0)]
-
         '''
         # Check possible moves from the current node
         '''
         for movement in movements:
             new_position = (current_node.position[0] + movement[0], current_node.position[1] + movement[1])
-            
             '''
             # Check if the new position is not the maze edges and not an obstacle
             '''
-            if 0 <= new_position[0] < len(maze) and 0 <= new_position[1] < len(maze[0]) and maze[new_position[0]][new_position[1]] == 0:
+            if (
+                0 <= new_position[0] < len(maze)
+                and 0 <= new_position[1] < len(maze[0])
+                and maze[new_position[0]][new_position[1]] == 0
+                and new_position not in visited
+            ):
                 '''
                 # Create a new node for the new position and add it to the search queue
                 '''
                 new_node = Node(current_node, new_position)
                 queue.append(new_node)
+                print(visited)
+                visited.add(new_position)
 
     return []
 
