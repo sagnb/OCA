@@ -50,7 +50,9 @@ def breadth_first_search(maze, start, end):
                 path.append(current.position)
                 current = current.parent
 
-            return path[::-1]
+            # return path[::-1]
+            print(len(path[::-1])-1)
+            return
 
         movements = [(0, -1), (0, 1), (-1, 0), (1, 0)]
         '''
@@ -74,7 +76,9 @@ def breadth_first_search(maze, start, end):
                 queue.append(new_node)
                 visited.add(new_position)
 
-    return []
+    # return []
+    print(0)
+    return
 
 def get_args():
   '''
@@ -127,18 +131,24 @@ def main():
     end = tuple(end)
 
     if start and (maze[start[0]][start[1]] == 1):
-        print("Start position is a blocked position on the maze.")
+        # print("Start position is a blocked position on the maze.")
+        print("0\n0\n0")
         return
     elif end and (maze[end[0]][end[1]] == 1):
-        print("End position is a blocked position on the maze.")
+        # print("End position is a blocked position on the maze.")
+        print("0\n0\n0")
         return
     else:
-        print(start, end)
-        path = breadth_first_search(maze, start, end)
-        if not path:
-            print("No path found.")
-        else:
-            print("Path:", path)
+        # path = breadth_first_search(maze, start, end)
+        tracemalloc.start()
+        time = timeit.timeit(lambda: breadth_first_search(maze, start, end), number=1)
+        memo = tracemalloc.get_traced_memory()[1]
+        tracemalloc.stop()
+        print(f'{memo}\n{time}\n')
+        # if not path:
+        #     print("No path found.")
+        # else:
+        #     print("Path:", path)
 
 if __name__ == "__main__":
     main()
