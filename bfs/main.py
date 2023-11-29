@@ -133,6 +133,7 @@ def main():
         print("End position is a blocked position on the maze.")
         return
     else:
+        print(start, end)
         path = breadth_first_search(maze, start, end)
         if not path:
             print("No path found.")
