@@ -7,8 +7,6 @@ import tracemalloc
 import timeit
 import numpy as np
 
-import utils.kohonen
-
 
 def args():
     '''
@@ -40,40 +38,72 @@ def args():
     return result.parse_args()
 
 
-def shortest_path(current_indexarr:np.ndarray, max_indexarr:int, matrix:np.ndarray, map:np.ndarray):
+def dissimilarity(a:np.ndarray, b:np.ndarray, p:int=2)->np.float64:
     '''
+    Return the dissimilarity between a and b
+    
+    :param a: numpy.ndarray
+    :param b: numpy.ndarray
+    :param p: int
+    
+    :return dissimilarity: numpy.float64
+    '''
+    result = sum(
+        [pow(abs(i - j), p) for i, j in zip(a, b)]
+    )
+    return pow(result, 1/p)
+
+
+def shortest_path(
+    current_indexarr:np.ndarray,
+    max_indexarr:np.ndarray,
+    matrix:np.ndarray,
+    input_map:np.ndarray
+):
+    '''
+    :param current_indexarr: numpy.ndarray
+    :param max_indexarr: numpy.ndarray
+    :param matrix: numpy.ndarray
+    :param input_map: numpy.ndarray
+    
     Return Shortest Path between i and j
     '''
-    path = {}
-    max_index = max_indexarr[0] * max_indexarr[1] - 1
-    current_index = max_indexarr[1] * current_indexarr[0] + current_indexarr[1]
-    if map[current_indexarr[0]][current_indexarr[1]] != 1:
-        if utils.kohonen.dissimilarity(np.array([0, 0]), current_indexarr, 1) == 1:
-            matrix[0][current_index] = 1
-        if current_index == 0:
-            matrix[current_index][0] = 0
-        elif matrix[0][current_index] == np.Inf:
-            lst_min = []
+    while True:
+        path = {}
+        max_index = max_indexarr[0] * max_indexarr[1] - 1
+        current_index = max_indexarr[1] * current_indexarr[0] + current_indexarr[1]
+        if input_map[current_indexarr[0]][current_indexarr[1]] != 1:
+            if dissimilarity(np.array([0, 0]), current_indexarr, 1) == 1:
+                matrix[0][current_index] = 1
+            if current_index == 0:
+                matrix[current_index][0] = 0
+            elif matrix[0][current_index] == np.Inf:
+                lst_min = []
 
-            ops = [[0, 1], [-1, 0], [0, -1]]
-            for op in ops:
-                iarr = current_indexarr + op
-                i = max_indexarr[1] * iarr[0] + iarr[1]
-                if i < len(matrix) and i > 0 and iarr[0] < len(map) and iarr[1] < len(map[0])  and map[iarr[0]][iarr[1]] != 1:
-                    if matrix[i][current_index] == np.Inf:
-                        matrix[i][current_index] = 1
+                ops = [[0, 1], [-1, 0], [0, -1]]
+                for op in ops:
+                    iarr = current_indexarr + op
+                    i = max_indexarr[1] * iarr[0] + iarr[1]
+                    if i < len(matrix) and i > 0 and iarr[0] < len(input_map) and iarr[1] < len(input_map[0])  and input_map[iarr[0]][iarr[1]] != 1:
+                        if matrix[i][current_index] == np.Inf:
+                            matrix[i][current_index] = 1
 
-                    lst_min.append(matrix[i][current_index] + matrix[0][i])
-                    path[matrix[i][current_index] + matrix[0][i]] = i
-            matrix[0][current_index] = min(lst_min)
-            matrix[current_index][0] = path[matrix[0][current_index]]
+                        lst_min.append(matrix[i][current_index] + matrix[0][i])
+                        path[matrix[i][current_index] + matrix[0][i]] = i
+                if lst_min:
+                    matrix[0][current_index] = min(lst_min)
+                    matrix[current_index][0] = path[matrix[0][current_index]]
+            else:
+                matrix[current_index][0] = 0
+
+        if current_index != max_index:
+            current_index += 1
+            current_indexarr = np.array(
+                [current_index//max_indexarr[1],
+                 current_index%max_indexarr[1]]
+            )
         else:
-            matrix[current_index][0] = 0
-
-    if current_index != max_index:
-        current_index += 1
-        current_indexarr = np.array([current_index//max_indexarr[1], current_index%max_indexarr[1]])
-        shortest_path(current_indexarr, max_indexarr, matrix, map)
+            break
 
 
 if __name__ == '__main__':
@@ -98,23 +128,13 @@ if __name__ == '__main__':
 
     tracemalloc.start()
 
-    
-    time = timeit.timeit(lambda: shortest_path(start, np.array(shape), shortest_matrix, input_matrix), number=1)
+
+    time = timeit.timeit(
+        lambda: shortest_path(start, np.array(shape), shortest_matrix, input_matrix),
+        number=1
+    )
 
     memo = tracemalloc.get_traced_memory()[1]
     tracemalloc.stop()
 
-    # print('caminho:', end=' ')
-    # result = tam
-    # while result != 0:
-    #     print(int(result), end=' ')
-    #     result = shortest_matrix[int(result)][0]
-    # print(0)
-
-    # my_som.plot_path()
-
-    # total_dist = 0
-    # for i, neuron in enumerate(my_som.neurons):
-    #     dist = utils.kohonen.dissimilarity(neuron, my_som.neurons[i-1]) if i > 0 else 0
-    #     total_dist += dist
     print(f'{shortest_matrix[0][tam-1]}\n{memo}\n{time}\n')

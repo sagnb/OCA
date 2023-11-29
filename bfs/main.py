@@ -54,7 +54,7 @@ def breadth_first_search(maze, start, end):
             print(len(path[::-1])-1)
             return
 
-        movements = [(0, -1), (0, 1), (-1, 0), (1, 0)]
+        movements = [(0, -1), (-1, 0), (0, 1), (1, 0)]
         '''
         # Check possible moves from the current node
         '''
